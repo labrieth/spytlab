@@ -115,8 +115,8 @@ def processOneProjection(Is,Ir):
 
 if __name__ == "__main__":
 
-    Is = spytIO.openImage('/Users/helene/PycharmProjects/spytlab/im0007.edf')
-    Ir = spytIO.openImage('/Users/helene/PycharmProjects/spytlab/Ref0367.edf')
+    Is = spytIO.openImage('im0007.edf')
+    Ir = spytIO.openImage('Ref0367.edf')
 
 
 
