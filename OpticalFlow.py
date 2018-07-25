@@ -59,7 +59,7 @@ def derivativesByOpticalflow(intensityImage,derivative,alpha=0,sig_scale=0):
 
 
 
-def kottler(dX,dY):
+def RL_LAS(dX,dY):
     print('kottler')
     i = complex(0, 1)
     Nx, Ny = dX.shape
@@ -105,7 +105,7 @@ def processOneProjection(Is,Ir):
     alpha=np.finfo(np.float32).eps
     dx, dy = derivativesByOpticalflow(Is, dI, alpha=alpha, sig_scale=sigma)
     phi = fc.frankotchellappa(dx, dy, False)
-    phi3 = kottler(dx, dy)
+    phi3 = RL_LAS(dx, dy)
     phi2 = LarkinAnissonSheppard(dx, dy)
 
 
