@@ -109,7 +109,7 @@ def processOneProjection(Is,Ir):
     phi2 = LarkinAnissonSheppard(dx, dy)
 
 
-    return {'dx': dx, 'dy': dy, 'phi': phi, 'phi2': phi2,'phi3': phi3,'gradientNorm':gradientNorm}
+    return {'dx': dx, 'dy': dy, 'phi': phi, 'phi2': phi2,'phi3': phi3}
 
 
 
@@ -121,6 +121,9 @@ if __name__ == "__main__":
 
 
     result = processOneProjection(Is, Ir)
+        
+    savepath = 'output'
+    if not os.path.exists(savepath): os.makedirs(savepath)
 
     dx = result['dx']
     dy = result['dy']
