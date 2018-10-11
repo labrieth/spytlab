@@ -20,7 +20,7 @@ import numpy as np
 
 
 
-def derivativesByOpticalflow(intensityImage,derivative,alpha=0,sig_scale=0):
+def derivativesByOpticalflow(intensityImage,derivative,alpha=0,sig_scale=1):
 
     Nx, Ny = derivative.shape
     # fourier transfomm of the derivative and shift low frequencies to the centre
@@ -100,9 +100,10 @@ def LarkinAnissonSheppard(dx,dy,alpha =0 ,sigma=0):
 def processOneProjection(Is,Ir):
     sigma = 0.9
     alpha = 0
+    alpha=np.finfo(np.float32).eps    
 
-    dI = (Is - Ir * (np.mean(gaussian_filter(Is,sigma=2.)) / np.mean(gaussian_filter(Ir,sigma=2.))))
-    alpha=np.finfo(np.float32).eps
+    dI = (Is - Ir * (np.mean(Is) / np.mean(Ir)))
+    
     dx, dy = derivativesByOpticalflow(Is, dI, alpha=alpha, sig_scale=sigma)
     phi = fc.frankotchellappa(dx, dy, False)
     phi3 = kottler(dx, dy)
